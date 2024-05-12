@@ -1,5 +1,6 @@
 import { Stack } from "expo-router";
 import { View } from "react-native";
+import { Feather } from '@expo/vector-icons';
 
 export default function RootLayout() {
   return (
@@ -22,6 +23,9 @@ export default function RootLayout() {
         name="index" 
         options={{
             title: 'Home',
+            headerRight: () => (
+              <Feather name="bell" size={20} color="white" />
+            )
          }} 
       />
       <Stack.Screen 
