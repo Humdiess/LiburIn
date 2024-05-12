@@ -2,6 +2,12 @@ import { Link } from 'expo-router'
 import React, { useState, useEffect } from 'react'
 import { Text, View, ScrollView, Pressable, Linking } from 'react-native'
 
+interface Article {
+  url: string;
+  title: string;
+  publishedAt: string;
+}
+
 const Index = () => {
   const [news, setNews] = useState([]);
 
@@ -27,7 +33,7 @@ const Index = () => {
         padding: 10, backgroundColor: 'lightblue' }}>
         <Text>Go to profile</Text>
       </Link>
-      {news.map((article) => (
+      {news.map((article: Article) => (
         <View key={article.url} style={{ padding: 10 }}>
           <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#ABABAB' }}>{article.title}</Text>
           <Text style={{ color: '#ABABAB' }}>{article.publishedAt}</Text>

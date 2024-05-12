@@ -12,7 +12,7 @@ export default function RootLayout() {
         headerTintColor: "white",
       }}
     >
-      <Stack.Screen name="Home" />
+      <Stack.Screen name="index" />
     </Stack>
   );
 }
