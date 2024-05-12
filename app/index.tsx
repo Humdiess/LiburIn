@@ -7,10 +7,16 @@ import { Text, View, ScrollView, Pressable, Linking } from 'react-native'
 const Index = () => {
   return (
     <ScrollView style={{ padding: 10, backgroundColor: '#121212' }}>
-      <Link href="/profile" asChild style={{ 
-        padding: 10, backgroundColor: 'lightblue' }}>
-        <Text>Go to profile</Text>
-      </Link>
+      <View>
+        <Link href="/profile" asChild style={{ 
+            padding: 10, 
+            backgroundColor: 'lightblue' 
+          }}
+        >
+          <Text>Go to profile</Text>
+        </Link>
+      </View>
+
       <NewsList />
     </ScrollView>
   )

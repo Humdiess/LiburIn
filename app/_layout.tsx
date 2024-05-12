@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { Feather } from '@expo/vector-icons';
 
 export default function RootLayout() {
@@ -22,9 +22,27 @@ export default function RootLayout() {
       <Stack.Screen 
         name="index" 
         options={{
-            title: 'Home',
-            headerRight: () => (
-              <Feather name="bell" size={20} color="white" />
+            header: () => (
+              <View style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center', 
+                  alignItems: 'center', 
+                  height: 80 ,
+                  backgroundColor: '#141414',
+                  shadowColor: "#000",
+                  padding: 10,
+                  marginBottom: 10
+                }}
+              >
+                <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', paddingTop: 10 }}>
+                  <View>
+                    <Text style={{ color: 'white', fontSize: 20 }}>BacaIn</Text>
+                  </View>
+                  <View>
+                    <Feather name="search" size={20} color="white" />
+                  </View>
+                </View>
+              </View>
             )
          }} 
       />
@@ -37,3 +55,4 @@ export default function RootLayout() {
     </Stack>
   );
 }
+
