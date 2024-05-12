@@ -10,9 +10,26 @@ export default function RootLayout() {
         },
         headerBlurEffect: "dark",
         headerTintColor: "white",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+        contentStyle: {
+          backgroundColor: "#121212",
+        }
       }}
     >
-      <Stack.Screen name="index" />
+      <Stack.Screen 
+        name="index" 
+        options={{
+            title: 'Home',
+         }} 
+      />
+      <Stack.Screen 
+        name="profile" 
+        options={{
+            title: 'Profile',
+         }} 
+      />
     </Stack>
   );
 }
