@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, Pressable, Linking } from 'react-native'
+import { View, Text, Pressable, Linking, Image } from 'react-native'
 
 interface Article {
     url: string;
@@ -27,18 +27,20 @@ const NewsList = () => {
       }
     };
 
-    return (
-        <View>
-            {news.map((article: Article) => (
-                <View key={article.url} style={{ padding: 10 }}>
-                  <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#ABABAB' }}>{article.title}</Text>
-                  <Text style={{ color: '#ABABAB' }}>{article.publishedAt}</Text>
-                  <Pressable onPress={() => Linking.openURL(article.url)}>
-                    <Text style={{ color: 'blue' }}>Baca selengkapnya</Text>
-                  </Pressable>
+    return (        
+      <View style={{ flex: 1 }}>
+        {news.map((article: Article) => (
+            <View key={article.url} style={{ flexDirection: 'row', padding: 10, alignItems: 'center', borderBottomColor: '#2D2D2D', borderBottomWidth: 1 }}>
+                <View style={{ flex: 1 }}>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#ABABAB', marginBottom: 5 }}>{article.title.substring(0, 80)}</Text>
+                    <Text style={{ color: '#ABABAB', fontSize: 12 }}>{article.publishedAt.substring(0, 10)}</Text>
                 </View>
-            ))}
-        </View>
+                <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                    <Image source={{ uri: "https://www.suarasurabaya.net/wp-content/uploads/2024/05/sdxrebh-e1714543653564.jpg.webp" }} style={{ width: 150, height: 100, resizeMode: 'cover', borderRadius: 5 }} />
+                </View>
+            </View>
+        ))}
+    </View>
     )
 }
 

@@ -16,7 +16,7 @@ export default function RootLayout() {
         },
         contentStyle: {
           backgroundColor: "#121212",
-        }
+        },
       }}
     >
       <Stack.Screen 
@@ -24,22 +24,20 @@ export default function RootLayout() {
         options={{
             header: () => (
               <View style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center', 
-                  alignItems: 'center', 
-                  height: 80 ,
-                  backgroundColor: '#141414',
-                  shadowColor: "#000",
-                  padding: 10,
-                  marginBottom: 10
+                  height: 100,
+                  backgroundColor: '#121212',
+                  paddingTop: 25,
+                  paddingHorizontal: 20,
+                  borderBottomColor: 'white',
+                  borderBottomWidth: 1,
                 }}
               >
-                <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', paddingTop: 10 }}>
+                <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center'}}>
                   <View>
-                    <Text style={{ color: 'white', fontSize: 20 }}>BacaIn</Text>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#ABABAB' }}>BacaIn</Text>
                   </View>
                   <View>
-                    <Feather name="search" size={20} color="white" />
+                    <Feather name="bell" size={20} color="#ABABAB" />
                   </View>
                 </View>
               </View>
