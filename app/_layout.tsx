@@ -24,7 +24,7 @@ export default function RootLayout() {
         options={{
             header: () => (
               <View style={{
-                  height: 100,
+                  height: 99,
                   backgroundColor: '#121212',
                   paddingTop: 25,
                   paddingHorizontal: 20,
