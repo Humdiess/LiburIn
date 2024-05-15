@@ -1,15 +1,15 @@
-import NewsList from '@/components/NewsList';
-import { Link } from 'expo-router'
-import React, { useState, useEffect } from 'react'
-import { Ionicons } from '@expo/vector-icons';
-import { Text, View, ScrollView, Pressable, Linking } from 'react-native'
+import { Text, View } from "react-native";
 
-const Index = () => {
+export default function Index() {
   return (
-    <ScrollView style={{ padding: 10, backgroundColor: '#121212' }}>
-      <NewsList />
-    </ScrollView>
-  )
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text>Edit app/index.tsx to edit this screen.</Text>
+    </View>
+  );
 }
-
-export default Index
