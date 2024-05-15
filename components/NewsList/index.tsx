@@ -18,23 +18,12 @@ const NewsList = () => {
     }, [])
 
   return (
-    <View style={styles.container}>
+    <View>
         {news.map((article: any, index: number) => (
             <Text key={index}>{article.title}</Text>
         ))}
     </View>
   )
 }
-
-const styles = {
-    container: {
-        BackgroundColor: 'white',
-        padding: 20,
-        gap: 20
-    },
-    text: {
-        fontSize: 24,
-    }
-  }
 
 export default NewsList
