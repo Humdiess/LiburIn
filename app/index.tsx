@@ -1,10 +1,15 @@
-import NewsList from "@/components/NewsList";
-import { Text, View, ScrollView } from "react-native";
+import { Text, View } from "react-native";
 
 export default function Index() {
   return (
-    <ScrollView>
-      <NewsList />
-    </ScrollView>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text>Edit app/index.tsx to edit this screen.</Text>
+    </View>
   );
 }
