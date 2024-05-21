@@ -1,9 +1,12 @@
-import React from 'react'
+import { Text, View, Image } from 'react-native'
 
-const TourList = () => {
+const tourList = ({name, image}:any) => {
   return (
-    <div>TourList</div>
+    <View>
+      <Image source={{ uri: 'https://picsum.photos/200/300' }} />
+      <Text>{name}</Text>
+    </View>
   )
 }
 
-export default TourList
+export default tourList
