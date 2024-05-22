@@ -47,6 +47,7 @@ const Index = () => {
     return <Text style={styles.error}>{error}</Text>;
   }
 
+
   return (
     <ScrollView contentContainerStyle={{ backgroundColor: 'white' }}>
       <Hero />
