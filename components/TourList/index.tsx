@@ -1,12 +1,40 @@
-import { Text, View, Image } from 'react-native'
+import { Link } from 'expo-router';
+import React from 'react';
+import { Text, View, Image, StyleSheet } from 'react-native';
 
-const tourList = ({name, image}:any) => {
-  return (
-    <View>
-      <Image source={{ uri: 'https://picsum.photos/200/300' }} />
-      <Text>{name}</Text>
-    </View>
-  )
+interface TourListProps {
+  name: string;
+  image: string;
+  slug: string;
 }
 
-export default tourList
+const TourList: React.FC<TourListProps> = ({ name, image, slug }) => {
+  return (
+    <View style={styles.container}>
+      <Image source={{ uri: image }} style={styles.image}/>
+      <Link href={`${slug}`}>
+        <View style={styles.content}>
+          <Text>{name.substring(0, 15)}</Text>
+        </View>
+      </Link>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    width: '48%',
+    backgroundColor: 'white',
+    borderRadius: 5,
+    overflow: 'hidden',
+  },
+  image: {
+    width: '100%',
+    height: 200,
+  },
+  content: {
+    padding: 10,
+  }
+})
+
+export default TourList;

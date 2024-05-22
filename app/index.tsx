@@ -1,24 +1,83 @@
-import TourList from "@/components/TourList";
-import { Text, View } from "react-native";
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { ScrollView, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
+import TourList from '@/components/TourList';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
 
 interface Place {
   id: number;
   name: string;
+  photo: string;
+  slug: string;
 }
 
-const index = async() => {
-  const response = await fetch('https://dewalaravel.com/api/places')
-  const place = await response.json()
+const Index = () => {
+  const [data, setData] = useState<Place[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://dewalaravel.com/api/places');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();
+        const processedData = jsonData.data.map((item: any) => ({
+          ...item,
+          photo: `https://dewalaravel.com${item.photo}`,
+        }));
+        setData(processedData);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />;
+  }
+
+  if (error) {
+    return <Text style={styles.error}>{error}</Text>;
+  }
 
   return (
-    <View>
-      {place.data.map((data:any) => {
-        return <TourList name={data.name} image={data.photo}  />
-      })}
-      <Text>Halo</Text>
-    </View>
-  )
-}
+    <ScrollView contentContainerStyle={{ backgroundColor: 'white' }}>
+      <Hero />
+      <Header title='Terbaru' />
+      <View style={styles.container}>
+        {data.map((item) => (
+          <TourList name={item.name} image={item.photo} key={item.id} slug={item.slug} />
+        ))}
+      </View>
+    </ScrollView>
+  );
+};
 
-export default index
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 10,
+    paddingHorizontal: 15,
+  },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  error: {
+    color: 'red',
+    textAlign: 'center',
+    marginVertical: 20,
+  },
+});
+
+export default Index;
