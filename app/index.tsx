@@ -25,8 +25,7 @@ const Index = () => {
         }
         const jsonData = await response.json();
         const processedData = jsonData.data.map((item: any) => ({
-          ...item,
-          photo: `https://dewalaravel.com${item.photo}`,
+          ...item
         }));
         setData(processedData);
       } catch (error: any) {
@@ -49,7 +48,7 @@ const Index = () => {
 
 
   return (
-    <ScrollView contentContainerStyle={{ backgroundColor: 'white' }}>
+    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ backgroundColor: 'white' }}>
       <Hero />
       <Header title='Terbaru' />
       <View style={styles.container}>
