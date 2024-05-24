@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, ScrollView, Image } from 'react-native'
 import Header from '../Header'
 
 const Hero = () => {
@@ -7,19 +7,19 @@ const Hero = () => {
     <View>
       <View style={styles.banner}>
         <View style={styles.bannerContent}>
-          <Text>Halo</Text>
+          <Image source={require('./banner.png')} style={styles.image}/>
         </View>
       </View>
       <Header title="Kategori"/>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.container}>
         <View style={styles.selector}>
-          <Text>Halo</Text>
+          <Text>Gunung</Text>
         </View>
         <View style={styles.selector}>
-          <Text>Halo</Text>
+          <Text>Taman Nasional</Text>
         </View>
         <View style={styles.selector}>
-          <Text>Halo</Text>
+          <Text>Museum</Text>
         </View>
         <View style={styles.selector}>
           <Text>Halo</Text>
@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   selector: {
-    borderRadius: 5,
-    paddingHorizontal: 15,
-    paddingVertical: 3,
+    borderRadius: 7.5,
+    paddingHorizontal: 30,
+    paddingVertical: 5,
     borderColor: 'black',
     borderWidth: 1,
     marginRight: 10,
@@ -58,12 +58,17 @@ const styles = StyleSheet.create({
   banner: {
     paddingHorizontal: 15,
     height: 150,
+    marginTop: 15,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
   bannerContent: {
     backgroundColor: 'grey',
-    borderRadius: 5,
-    padding: 10,
+    borderRadius: 7.5,
     height: 150,
+    overflow: 'hidden',
   }
 })
 
