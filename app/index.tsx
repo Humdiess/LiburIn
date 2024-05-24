@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, View, StyleSheet, ActivityIndicator } from 'react-native';
+import { ScrollView, Text, View, StyleSheet, ActivityIndicator, InteractionManager } from 'react-native';
 import TourList from '@/components/TourList';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-
-interface Place {
-  id: number;
-  name: string;
-  photo: string;
-  slug: string;
-}
+import { fetchPlaces, Place } from '@/utils/api';
 
 const Index = () => {
   const [data, setData] = useState<Place[]>([]);
@@ -19,15 +13,8 @@ const Index = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://dewalaravel.com/api/places');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const jsonData = await response.json();
-        const processedData = jsonData.data.map((item: any) => ({
-          ...item
-        }));
-        setData(processedData);
+        const placesData = await fetchPlaces();
+        setData(placesData);
       } catch (error: any) {
         setError(error.message);
       } finally {
@@ -42,18 +29,19 @@ const Index = () => {
     return <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />;
   }
 
-  if (error) {
-    return <Text style={styles.error}>{error}</Text>;
-  }
-
-
   return (
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ backgroundColor: 'white' }}>
-      <Hero />
-      <Header title='Terbaru' />
+      <Hero categories={[]} />
+      <Header title="Terbaru" />
       <View style={styles.container}>
         {data.map((item) => (
-          <TourList name={item.name} image={item.photo} key={item.id} slug={item.slug} />
+          <TourList
+            name={item.name}
+            image={item.photo}
+            key={item.id}
+            slug={item.slug}
+            category={item.category.name}
+          />
         ))}
       </View>
     </ScrollView>

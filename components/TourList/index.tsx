@@ -1,48 +1,52 @@
-import { Link } from 'expo-router';
 import React from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
 
 interface TourListProps {
   name: string;
   image: string;
   slug: string;
+  category: string;
 }
 
-const TourList: React.FC<TourListProps> = ({ name, image, slug }) => {
+const TourList: React.FC<TourListProps> = ({ name, image, slug, category }) => {
+  const router = useRouter();
+
+  const handlePress = () => {
+    router.push(`/places/${slug}`);
+  };
+
   return (
-    <View style={styles.container}>
-      <Image source={{ uri: image }} style={styles.image}/>
-      <Link href={`${slug}`}>
-        <View style={styles.content}>
-          <Text>{name.substring(0, 15)}</Text>
-        </View>
-      </Link>
-    </View>
+    <TouchableOpacity onPress={handlePress} style={styles.container}>
+      <Image source={{ uri: image }} style={styles.image} />
+      <Text style={styles.name}>{name}</Text>
+      <Text style={styles.category}>{category}</Text>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     width: '48%',
-    backgroundColor: 'white',
-    borderRadius: 5,
-    overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    marginBottom: 15,
   },
   image: {
     width: '100%',
-    height: 200,
+    height: 150,
+    borderRadius: 8,
   },
-  content: {
-    padding: 10,
-  }
-})
+  name: {
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  category: {
+    marginTop: 5,
+    fontSize: 14,
+    color: 'gray',
+    textAlign: 'center',
+  },
+});
 
 export default TourList;

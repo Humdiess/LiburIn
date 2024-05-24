@@ -1,45 +1,41 @@
-import React from 'react'
-import { Text, View, StyleSheet, ScrollView, Image } from 'react-native'
-import Header from '../Header'
+import React from 'react';
+import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
+import Header from '../Header';
 
-const Hero = () => {
+interface Category {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+interface HeroProps {
+  categories: Category[];
+}
+
+
+const Hero: React.FC<HeroProps> = ({ categories }) => {
   return (
     <View>
       <View style={styles.banner}>
         <View style={styles.bannerContent}>
-          <Image source={require('./banner.png')} style={styles.image}/>
+          <Image source={require('./banner.png')} style={styles.image} />
         </View>
       </View>
-      <Header title="Kategori"/>
+      <Header title="Kategori" />
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.container}>
-        <View style={styles.selector}>
-          <Text>Gunung</Text>
-        </View>
-        <View style={styles.selector}>
-          <Text>Taman Nasional</Text>
-        </View>
-        <View style={styles.selector}>
-          <Text>Museum</Text>
-        </View>
-        <View style={styles.selector}>
-          <Text>Halo</Text>
-        </View>
-        <View style={styles.selector}>
-          <Text>Halo</Text>
-        </View>
-        <View style={styles.selector}>
-          <Text>Halo</Text>
-        </View>
-        <View style={styles.selector}>
-          <Text>Halo</Text>
-        </View>
-        <View style={styles.selector}>
-          <Text>Halo</Text>
-        </View>
+        {categories && categories.length > 0 ? (
+          categories.map((category) => (
+            <View key={category.id} style={styles.selector}>
+              <Text>{category.name}</Text>
+            </View>
+          ))
+        ) : (
+          <Text>No categories available</Text>
+        )}
       </ScrollView>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -69,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 7.5,
     height: 150,
     overflow: 'hidden',
-  }
-})
+  },
+});
 
-export default Hero
+export default Hero;
