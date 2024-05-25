@@ -12,12 +12,12 @@ interface TourListProps {
 const TourList: React.FC<TourListProps> = ({ name, image, slug, category }) => {
   const router = useRouter();
 
-  const handlePress = () => {
-    router.push(`/places/${slug}`);
-  };
+  // const handlePress = () => {
+  //   router.push(`/places/${slug}`);
+  // };
 
   return (
-    <TouchableOpacity onPress={handlePress} style={styles.container}>
+    <TouchableOpacity delayPressOut={2} style={styles.container}>
       <Image source={{ uri: image }} style={styles.image} />
       <Text style={styles.name}>{name}</Text>
       <Text style={styles.category}>{category}</Text>
