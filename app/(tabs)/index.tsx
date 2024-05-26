@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, View, StyleSheet, ActivityIndicator, InteractionManager } from 'react-native';
+import { ScrollView, Text, View, StyleSheet, ActivityIndicator, InteractionManager, Image } from 'react-native';
 import TourList from '@/components/TourList';
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
 import { fetchPlaces, Place } from '@/utils/api';
 
 const Index = () => {
@@ -30,9 +28,13 @@ const Index = () => {
   }
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ backgroundColor: 'white' }}>
-      <Hero categories={[]} />
-      <Header title="Terbaru" />
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.home}>
+      <View style={styles.banner}>
+        <Image source={require('../../assets/images/banner.png')} style={styles.bannerImage} />
+      </View>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Terbaru</Text>
+      </View>
       <View style={styles.container}>
         {data.map((item) => (
           <TourList
@@ -49,12 +51,34 @@ const Index = () => {
 };
 
 const styles = StyleSheet.create({
+  home: {
+    padding: 15,
+    backgroundColor: 'white',
+  },
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     gap: 10,
-    paddingHorizontal: 15,
+  },
+  banner: {
+    height: 200,
+    width: '100%',
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
+  bannerImage: {
+    height: 200,
+    width: '100%',
+    resizeMode: 'cover',
+    borderRadius: 8,
+  },
+  header: {
+    paddingVertical: 15,
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   loading: {
     flex: 1,

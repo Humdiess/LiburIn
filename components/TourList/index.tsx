@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
+import { Link, useRouter } from 'expo-router';
 
 interface TourListProps {
   name: string;
@@ -10,18 +10,15 @@ interface TourListProps {
 }
 
 const TourList: React.FC<TourListProps> = ({ name, image, slug, category }) => {
-  const router = useRouter();
-
-  // const handlePress = () => {
-  //   router.push(`/places/${slug}`);
-  // };
 
   return (
-    <TouchableOpacity delayPressOut={2} style={styles.container}>
-      <Image source={{ uri: image }} style={styles.image} />
-      <Text style={styles.name}>{name}</Text>
-      <Text style={styles.category}>{category}</Text>
-    </TouchableOpacity>
+    <Link href={`/${slug}`} asChild>
+      <Pressable style={styles.container}>
+        <Image source={{ uri: image }} style={styles.image} />
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.category}>{category}</Text>
+      </Pressable>
+    </Link>
   );
 };
 
