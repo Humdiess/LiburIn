@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, View, StyleSheet, ActivityIndicator, InteractionManager, Image } from 'react-native';
+import { ScrollView, Text, View, StyleSheet, ActivityIndicator, Image, TouchableOpacity } from 'react-native';
 import TourList from '@/components/TourList';
-import { fetchPlaces, Place } from '@/utils/api';
+import { fetchPlaces, fetchCategories, Place, Category } from '@/utils/api';
+import { useRouter } from 'expo-router';
 
 const Index = () => {
   const [data, setData] = useState<Place[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const placesData = await fetchPlaces();
+        const [placesData, categoriesData] = await Promise.all([fetchPlaces(), fetchCategories()]);
         setData(placesData);
+        setCategories(categoriesData);
       } catch (error: any) {
         setError(error.message);
       } finally {
@@ -27,6 +31,10 @@ const Index = () => {
     return <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />;
   }
 
+  if (error) {
+    return <Text style={styles.error}>{error}</Text>;
+  }
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.home}>
       <View style={styles.banner}>
@@ -34,6 +42,18 @@ const Index = () => {
       </View>
       <View style={styles.header}>
         <Text style={styles.headerText}>Terbaru</Text>
+      </View>
+      <View style={styles.categoryContainer}>
+        {categories.map((category) => (
+          <TouchableOpacity
+            key={category.id}
+            style={styles.categoryButton}
+            // onPress={() => router.push(`/category?slug=${category.slug}`)}
+            onPress={() => console.log('Category Slug:', category.slug)}
+          >
+            <Text style={styles.categoryButtonText}>{category.name}</Text>
+          </TouchableOpacity>
+        ))}
       </View>
       <View style={styles.container}>
         {data.map((item) => (
@@ -89,6 +109,23 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     marginVertical: 20,
+  },
+  categoryContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  categoryButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+    marginRight: 10,
+    marginBottom: 10,
+  },
+  categoryButtonText: {
+    fontSize: 16,
   },
 });
 

@@ -46,4 +46,19 @@ export const fetchPlaceDetail = async (slug: string): Promise<Place> => {
   };
 };
 
-export { Place };
+export const fetchPlacesByCategory = async (categorySlug: string): Promise<Place[]> => {
+  const response = await fetch(`${BASE_URL}/api/places?category=${categorySlug}`);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  const jsonData = await response.json();
+  return jsonData.data.map((item: any) => ({
+    id: item.id,
+    name: item.name,
+    photo: item.photo,
+    slug: item.slug,
+    category: item.category,
+  }));
+};
+
+export { Place, Category };
