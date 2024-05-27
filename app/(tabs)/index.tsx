@@ -41,9 +41,9 @@ const Index = () => {
         <Image source={require('../../assets/images/banner.png')} style={styles.bannerImage} />
       </View>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Terbaru</Text>
+        <Text style={styles.headerText}>Kategori</Text>
       </View>
-      <View style={styles.categoryContainer}>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.categoryContainer}>
         {categories.map((category) => (
           <TouchableOpacity
             key={category.id}
@@ -53,6 +53,9 @@ const Index = () => {
             <Text style={styles.categoryButtonText}>{category.name}</Text>
           </TouchableOpacity>
         ))}
+      </ScrollView>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Terbaru</Text>
       </View>
       <View style={styles.container}>
         {data.map((item) => (
@@ -111,14 +114,13 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
     marginBottom: 20,
   },
   categoryButton: {
     paddingVertical: 10,
     paddingHorizontal: 15,
-    backgroundColor: '#f0f0f0',
+    borderColor: 'black',
+    borderWidth: 1,
     borderRadius: 8,
     marginRight: 10,
     marginBottom: 10,
