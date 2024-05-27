@@ -15,7 +15,7 @@ const TourList: React.FC<TourListProps> = ({ name, image, slug, category }) => {
     
   const handlePress = () => {
     console.log(`Navigating to slug: ${slug}`);
-    router.push(`/${slug}`)
+    router.push(`/place/${slug}`)
   }
 
   return (

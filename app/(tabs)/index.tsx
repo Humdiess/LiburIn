@@ -48,8 +48,7 @@ const Index = () => {
           <TouchableOpacity
             key={category.id}
             style={styles.categoryButton}
-            onPress={() => router.push(`/category?slug=${category.slug}`)}
-            // onPress={() => router.push(`/${categories}`)}
+            onPress={() => router.push(`/category/${category.slug}`)}
           >
             <Text style={styles.categoryButtonText}>{category.name}</Text>
           </TouchableOpacity>
