@@ -13,6 +13,7 @@ export const fetchPlaces = async (): Promise<Place[]> => {
     name: item.name,
     photo: item.photo,
     slug: item.slug,
+    description: item.description,
     category: item.category,
   }));
 };
@@ -56,6 +57,7 @@ export const fetchPlacesByCategory = async (categorySlug: string): Promise<Place
     id: item.id,
     name: item.name,
     photo: item.photo,
+    description: item.description,
     slug: item.slug,
     category: item.category,
   }));

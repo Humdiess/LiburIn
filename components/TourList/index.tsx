@@ -11,14 +11,19 @@ interface TourListProps {
 
 const TourList: React.FC<TourListProps> = ({ name, image, slug, category }) => {
 
+  const router = useRouter()
+    
+  const handlePress = () => {
+    console.log(`Navigating to slug: ${slug}`);
+    router.push(`/${slug}`)
+  }
+
   return (
-    <Link href={`/${slug}`} asChild>
-      <Pressable style={styles.container}>
+    <Pressable style={styles.container} onPress={handlePress}>
         <Image source={{ uri: image }} style={styles.image} />
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.category}>{category}</Text>
-      </Pressable>
-    </Link>
+    </Pressable>
   );
 };
 

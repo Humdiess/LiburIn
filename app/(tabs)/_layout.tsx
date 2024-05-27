@@ -18,18 +18,6 @@ const TabsLayout = () => {
             headerShown: false
         }}
       />
-      <Tabs.Screen 
-        name="category" 
-        options={{
-            title: 'Category',
-            headerShadowVisible: false,
-            headerShown: true,
-            tabBarStyle: {
-              display: 'none'
-            }
-        }}
-        
-      />
     </Tabs>
   )
 }
