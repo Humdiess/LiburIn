@@ -41,13 +41,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 16,
     fontWeight: 'bold',
-    textAlign: 'center',
   },
   category: {
     marginTop: 5,
     fontSize: 14,
     color: 'gray',
-    textAlign: 'center',
   },
 });
 

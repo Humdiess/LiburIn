@@ -7,7 +7,13 @@ const TabsLayout = () => {
       <Tabs.Screen 
         name="index" 
         options={{
-            title: 'Home',
+            title: 'LiburIn',
+            headerTitleAlign: 'center',
+            headerShadowVisible: true,
+            headerTitleStyle: {
+              fontSize: 24,
+              fontWeight: 'semibold'
+            }
         }}
       />
       <Tabs.Screen 

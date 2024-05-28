@@ -85,13 +85,13 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   banner: {
-    height: 200,
+    height: 150,
     width: '100%',
     borderRadius: 8,
     overflow: 'hidden',
   },
   bannerImage: {
-    height: 200,
+    height: 150,
     width: '100%',
     resizeMode: 'cover',
     borderRadius: 8,
@@ -115,16 +115,14 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     flexDirection: 'row',
-    marginBottom: 20,
   },
   categoryButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingVertical: 6,
+    paddingHorizontal: 13,
     borderColor: '#757575',
     borderWidth: 1,
     borderRadius: 8,
     marginRight: 10,
-    marginBottom: 10,
   },
   categoryButtonText: {
     fontSize: 16,
