@@ -10,7 +10,6 @@ const TabsLayout = () => {
         name="index" 
         options={{
             title: 'LiburIn',
-            headerTitleAlign: 'center',
             headerShadowVisible: true,
             headerTitleStyle: {
               fontSize: 24,

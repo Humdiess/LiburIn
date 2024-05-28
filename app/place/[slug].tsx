@@ -18,9 +18,9 @@ const PlaceDetail = () => {
     getPlace()
   }, [slug])
 
-  if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />;
-  }
+  // if (loading) {
+  //   return <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />;
+  // }
 
   if (!place) {
     return <Text style={{ textAlign: "center" }}>Loading...</Text>
