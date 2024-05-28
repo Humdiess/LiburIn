@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, ActivityIndicator, Image } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator, Image, ScrollView } from 'react-native';
 
 const CategoryList = () => {
     const { categories } = useLocalSearchParams()
@@ -41,17 +41,13 @@ const CategoryList = () => {
   }
 
   return (
-    <FlatList
-      data={data}
-      renderItem={({ item }) => (
-        <View>
-          <Text>{item.name}</Text>
-          <Text>{item.description}</Text>
-          <Image source={{ uri: item.photo }} style={{ width: 200, height: 200 }} />
-        </View>
-      )}
-      keyExtractor={item => item.id.toString()}
-    />
+    <ScrollView>
+        {data.map((item: any) => (
+            <View key={item.id}>
+                <Text>{item.name}</Text>
+            </View>
+        ))}
+    </ScrollView>
   );
 };
 
