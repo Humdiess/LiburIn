@@ -3,6 +3,7 @@ import { ScrollView, Text, View, StyleSheet, ActivityIndicator, Image, Touchable
 import TourList from '@/components/TourList';
 import { fetchPlaces, fetchCategories, Place, Category } from '@/utils/api';
 import { useRouter } from 'expo-router';
+import { FlatList } from 'react-native';
 
 const Index = () => {
   const [data, setData] = useState<Place[]>([]);
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     gap: 10,
+    paddingBottom: 15
   },
   banner: {
     height: 150,
@@ -117,15 +119,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   categoryButton: {
-    paddingVertical: 6,
-    paddingHorizontal: 13,
-    borderColor: '#757575',
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    backgroundColor: '#ffffff',
+    borderColor: '#efefef',
     borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
     borderRadius: 8,
     marginRight: 10,
+    marginBottom: 5,
+    marginLeft: 5
+
   },
   categoryButtonText: {
-    fontSize: 16,
+    fontSize: 14,
   },
 });
 

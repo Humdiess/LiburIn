@@ -22,12 +22,7 @@ const CategoryList = () => {
     }, []);
 
     if (loading) {
-      return (
-        <View>
-          <ActivityIndicator size="large" color="#0000ff" />
-          <Text>Loading...</Text>
-        </View>
-      );
+      return <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />
     }
 
     if (error) {
@@ -53,7 +48,7 @@ const CategoryList = () => {
   return (
     <ScrollView style={styles.container}>
         {data.map((item: { slug: string; photo: string; name: string }) => (
-            <Pressable onPress={() => handlePress(item.slug)} style={styles.card}>
+            <Pressable key={item.slug} onPress={() => handlePress(item.slug)} style={styles.card}>
                 <Image source={{ uri: item.photo }} style={styles.image} />
                 <Text style={styles.name}>{item.name}</Text>
             </Pressable>
@@ -66,6 +61,11 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         padding: 15
+    },
+    loading: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     card: {
         flexDirection: 'row',

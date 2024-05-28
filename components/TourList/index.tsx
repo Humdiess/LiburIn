@@ -18,10 +18,14 @@ const TourList: React.FC<TourListProps> = ({ name, image, slug, category }) => {
     router.push(`/place/${slug}`)
   }
 
+  const formatName = (name: string) => {
+    return name.length > 18 ? `${name.substring(0, 16)}...` : name;
+  }
+
   return (
     <Pressable style={styles.container} onPress={handlePress}>
         <Image source={{ uri: image }} style={styles.image} />
-        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.name}>{formatName(name)}</Text>
         <Text style={styles.category}>{category}</Text>
     </Pressable>
   );

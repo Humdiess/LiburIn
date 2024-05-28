@@ -1,10 +1,12 @@
 import { useLocalSearchParams } from "expo-router"
 import { useState, useEffect } from "react"
+import { ActivityIndicator } from "react-native";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native"
 
 const PlaceDetail = () => {
   const { slug } = useLocalSearchParams()
   const [place, setPlace] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
 
   const getPlace = async () => {
     const response = await fetch(`https://dewalaravel.com/api/places/${slug}`)
@@ -16,16 +18,21 @@ const PlaceDetail = () => {
     getPlace()
   }, [slug])
 
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />;
+  }
+
   if (!place) {
-    return <Text>Loading...</Text>
+    return <Text style={{ textAlign: "center" }}>Loading...</Text>
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={{height: '100%'}}>
       <Image source={{ uri: place.photo }} style={styles.image} />
-      <Text style={styles.name}>{place.name}</Text>
-      {/* <Text style={styles.name}>{place.category.name}</Text> */}
-      <Text style={styles.description}>{place.description}</Text>
+      <View style={styles.container}>
+        <Text style={styles.name}>{place.name}</Text>
+        <Text style={styles.description}>{place.description}</Text>
+      </View>
     </ScrollView>
   );
 };
@@ -38,8 +45,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 200,
-    borderRadius: 8,
+    height: 250,
   },
   name: {
     marginTop: 10,
@@ -51,6 +57,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'gray',
   },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+},
 });
 
 export default PlaceDetail
