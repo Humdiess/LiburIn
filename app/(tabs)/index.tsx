@@ -49,6 +49,7 @@ const Index = () => {
             key={category.id}
             style={styles.categoryButton}
             onPress={() => router.push(`/category/${category.slug}`)}
+            // onPress={() => console.log(category.slug)}
           >
             <Text style={styles.categoryButtonText}>{category.name}</Text>
           </TouchableOpacity>
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
   categoryButton: {
     paddingVertical: 10,
     paddingHorizontal: 15,
-    borderColor: 'black',
+    borderColor: '#757575',
     borderWidth: 1,
     borderRadius: 8,
     marginRight: 10,

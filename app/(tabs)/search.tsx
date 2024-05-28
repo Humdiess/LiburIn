@@ -68,7 +68,7 @@ const Search = () => {
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.itemContainer} onPress={() => router.push(`/${item.slug}`)}>
+          <TouchableOpacity style={styles.itemContainer} onPress={() => router.push(`/place/${item.slug}`)}>
             <Image source={{ uri: item.photo }} style={styles.itemImage} />
             <View style={styles.itemTextContainer}>
               <Text style={styles.itemName}>{item.name}</Text>
