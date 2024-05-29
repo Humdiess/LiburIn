@@ -6,7 +6,7 @@ import { View, Text, Image, StyleSheet, ScrollView } from "react-native"
 const PlaceDetail = () => {
   const { slug } = useLocalSearchParams()
   const [place, setPlace] = useState<any>(null)
-
+  
   const getPlace = async () => {
     const response = await fetch(`https://dewalaravel.com/api/places/${slug}`)
     const placeData = await response.json()
@@ -16,10 +16,6 @@ const PlaceDetail = () => {
   useEffect(() => {
     getPlace()
   }, [slug])
-
-  // if (loading) {
-  //   return <ActivityIndicator size="large" color="#0000ff" style={styles.loading} />;
-  // }
 
   if (!place) {
     return <Text style={{ textAlign: "center" }}>Loading...</Text>
