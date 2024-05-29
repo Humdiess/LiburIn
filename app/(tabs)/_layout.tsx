@@ -11,9 +11,10 @@ const TabsLayout = () => {
         options={{
             title: 'LiburIn',
             headerShadowVisible: true,
+            headerTitleAlign: 'center',
             headerTitleStyle: {
               fontSize: 24,
-              fontWeight: 'semibold'
+              fontWeight: '700'
             },
             tabBarLabel: () => null,
             tabBarIcon: ({ focused, color }) => (
@@ -30,7 +31,8 @@ const TabsLayout = () => {
             tabBarLabel: () => null,
             tabBarIcon: ({ focused, color }) => (
               <Icon name="search" size={24} color={focused ? 'black' : color} />
-            )
+            ),
+            tabBarHideOnKeyboard: true
         }}
       />
     </Tabs>

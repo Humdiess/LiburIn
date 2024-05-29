@@ -41,9 +41,9 @@ const Index = () => {
       <View style={styles.banner}>
         <Image source={require('../../assets/images/banner.png')} style={styles.bannerImage} />
       </View>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={styles.headerText}>Kategori</Text>
-      </View>
+      </View> */}
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.categoryContainer}>
         {categories.map((category) => (
           <TouchableOpacity
@@ -56,9 +56,9 @@ const Index = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={styles.headerText}>Terbaru</Text>
-      </View>
+      </View> */}
       <View style={styles.container}>
         {data.map((item) => (
           <TourList
@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     flexDirection: 'row',
+    marginVertical: 20
   },
   categoryButton: {
     paddingVertical: 8,
@@ -137,6 +138,8 @@ const styles = StyleSheet.create({
   },
   categoryButtonText: {
     fontSize: 14,
+    fontWeight: '500',
+    color: '#242424'
   },
 });
 

@@ -6,7 +6,6 @@ import { View, Text, Image, StyleSheet, ScrollView } from "react-native"
 const PlaceDetail = () => {
   const { slug } = useLocalSearchParams()
   const [place, setPlace] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
 
   const getPlace = async () => {
     const response = await fetch(`https://dewalaravel.com/api/places/${slug}`)
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     height: '100%',
-    padding: 20,
+    padding: 15
   },
   image: {
     width: '100%',
@@ -54,6 +53,7 @@ const styles = StyleSheet.create({
   },
   description: {
     marginTop: 10,
+    textAlign: 'justify',
     fontSize: 16,
     color: 'gray',
   },

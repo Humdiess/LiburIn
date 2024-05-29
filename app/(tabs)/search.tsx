@@ -60,7 +60,7 @@ const Search = () => {
                 onChangeText={handleSearch}
             />
             <TouchableOpacity onPress={handleCancel} style={styles.cancelButton}>
-              <Text>Cancel</Text>
+              <Text style={{ color: 'grey' }}>Cancel</Text>
             </TouchableOpacity>
         </View>
       <FlatList
@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingTop: 15
   },
   loading: {
     flex: 1,
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
     maxWidth: '100%',
   },
   cancelButton: {
-    marginBottom: 4,
+
   },
   searchBar: {
     height: 40,
